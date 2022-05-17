@@ -76,7 +76,8 @@ try {
   //Se manda imagen
   if(recibido)
   {
-     broadcast(message.toString('utf-8'));
+     //broadcast(message.toString('utf-8'));
+     broadcast(message);
      recibido=false;
   }
 }
