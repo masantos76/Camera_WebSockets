@@ -3,6 +3,8 @@ var os = require('os');
 var networkInterfaces = os.networkInterfaces();
 
 const IP_LOCAL=networkInterfaces.wlan0[0].address;
+const fs = require('fs');
+const https = require('https');
 
 var express = require('express');
 var app = express();
@@ -12,9 +14,14 @@ require('dotenv').config();
 
 //Comienzo servidor Web una sola entrada para ver si estás misma red
 
-app.listen(3000, function() {
-    console.log('server Web  running on port 3000');
-} )
+
+https.createServer({
+  key: fs.readFileSync('my_cert.key'),
+  cert: fs.readFileSync('my_cert.crt')
+}, app).listen(8080, function(){
+  console.log("My HTTPS server listening on port 8080 ...");
+});
+
 
 app.get('/ip', (req,res)=>{res.end(IP_LOCAL)});
 
@@ -23,6 +30,8 @@ const webSocketServer = new WebSocket.Server({ port: process.env.PORT  });
 let  spawn = require("child_process").spawn;
 let process_py=null;
 let recibido=false;
+let user_web=null;
+
 
 webSocketServer.on('connection',  function(ws)
 {
@@ -35,7 +44,7 @@ webSocketServer.on('connection',  function(ws)
             if(data1.message=="SYNC")
             {
                 broadcast(JSON.stringify({ type: 'ip', message: IP_LOCAL}));
-
+                user_web=ws;
             }
             else
            {
@@ -74,10 +83,10 @@ try {
   this.emit(type, payload || message)
 } catch (ignore) {
   //Se manda imagen
-  if(recibido)
+  if(recibido && user_web!=null)
   {
      //broadcast(message.toString('utf-8'));
-     broadcast(message);
+     user_web.send(message);
      recibido=false;
   }
 }
