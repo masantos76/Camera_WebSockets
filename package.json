@@ -1,3 +1,4 @@
+ GNU nano 5.4                      package.json
 {
   "name": "Serv_WebSockets",
   "version": "1.0.0",
@@ -12,6 +13,8 @@
   "dependencies": {
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "fs": "0.0.1-security",
+    "https": "^1.0.0",
     "ws": "^8.6.0"
   }
 }
