@@ -5,6 +5,11 @@ import websockets
 import base64
 import asyncio
 import sys
+import ssl
+
+ssl_context = ssl.create_default_context()
+ssl_context.check_hostname = False
+ssl_context.verify_mode = ssl.CERT_NONE
 
 IP= sys.argv[1]
 resol = int(sys.argv[2])
@@ -23,7 +28,7 @@ capture.set(cv2.CAP_PROP_FPS,1)
 
 async def hello():
     #async with websockets.connect("wss://servidor-rover5.herokuapp.com") as ws:
-    async with websockets.connect("ws://"+IP+":8083") as ws:
+    async with websockets.connect("wss://"+IP+":8083",ssl=ssl_context) as ws:
         try:
            j=0
            while True:
