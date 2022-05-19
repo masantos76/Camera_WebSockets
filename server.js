@@ -67,7 +67,7 @@ webSocketServer.on('connection',  function(ws)
 
 
 
-        process_py = spawn('python',["main.py",IP_LOCAL,data1.message] );
+        process_py = spawn('python3',["main.py",IP_LOCAL,data1.message] );
 
 
     })
