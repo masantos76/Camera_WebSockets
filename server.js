@@ -15,18 +15,24 @@ require('dotenv').config();
 //Comienzo servidor Web una sola entrada para ver si estás misma red
 
 
-https.createServer({
+//Comienzo servidor Web una sola entrada para ver si estás misma red
+const httpsServer=https.createServer({
   key: fs.readFileSync('my_cert.key'),
   cert: fs.readFileSync('my_cert.crt')
-}, app).listen(8080, function(){
-  console.log("My HTTPS server listening on port 8080 ...");
+}, app).listen(8083, function(){
+  console.log("My HTTPS server listening on port " + 8083 + "...");
+});
+
+app.get('/camera', function(req, res){
+  res.send("Si quieres usar la cámara de manera local, debes acceptar el certificado local");
 });
 
 
-app.get('/ip', (req,res)=>{res.end(IP_LOCAL)});
 
 // Comienzo el servidor Web Sockets
-const webSocketServer = new WebSocket.Server({ port: process.env.PORT  });
+//const webSocketServer = new WebSocket.Server({ port: process.env.PORT  });
+const webSocketServer = new WebSocket.Server({server: httpsServer });
+
 let  spawn = require("child_process").spawn;
 let process_py=null;
 let recibido=false;
