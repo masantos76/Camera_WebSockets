@@ -23,35 +23,15 @@ const httpsServer=https.createServer({
   console.log("My HTTPS server listening on port " + 8083 + "...");
 });
 
-app.get('/', function(request,response){
-  let filePath = request.url;
 
-  if (filePath === '/') {
-    filePath = 'index.html';
-  }
-  filePath = `html/${filePath}`;
+// obtiene la ruta del directorio publico donde se encuentran los elementos estaticos (css, js).
+var publicPath = path.resolve(__dirname, 'html'); 
 
-  const extname = path.extname(filePath);
-  let contentType;
+// Para que los archivos estaticos queden disponibles.
+app.use(express.static(publicPath));
 
-  switch (extname) {
-    case '.css':
-      contentType = 'text/css';
-      break;
-    case '.html':
-      contentType = 'text/html';
-    break;
-  }
-
-  response.writeHead(200, { 'Content-Type': `${contentType}; charset=UTF-8` });
-
-  fs.readFile(filePath,(err,content)=>{
-    if (err) {
-      return console.log('Error: ', err);
-    }
-
-    response.write(content);
-    response.end();
+app.get('/Rover_RC', function(request,response){
+   res.sendfile(__dirname + '/html/index.html');
 });
 app.get('/camera', function(req, res){
   res.send("Si quieres usar la cámara de manera local, debes acceptar el certificado local");
