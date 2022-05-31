@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Control Remoto del Rover</title>
+        <link rel="stylesheet" href="css/estilos.css"/>
+        <link rel="stylesheet" href="css/modal.css"/>
+        <link rel="shortcut icon" href="img/logo_sin_letra.jpg"/>
+        <script src="js/index.js"></script>
+        <script src="js/modal.js"></script>
+
+
+
+    </head>
+    <!-- Cambiar el número en iniciar_interface_rover según Raspberry -->
+    <body onpointerup="mandar_instruccion_apagado(obj_esp);" ontouchend="mandar_instruccion_apagado(obj_esp);" onload="iniciar_interface_rover(1);">
+
+
+          <div id="control">
+            <div id="wrapper">
+               <h1 id="caption">Rover's <span id="remote" title="Remote Control"></span></h1>
+
+
+
+              <div id="apartado" class="responsive">
+                <div id="vid" class="oculta extra"><h4>Video Camera<button onpointerdown='cerrar_video()'>X</button></h4><span id="video1"><img id="image1" src="img/loader.gif"/></span></div>
+                <div id="crc" class="oculta extra"><h4>Cam Remote Control<button onpointerdown='cerrar_crc()'>X</button></h4><span id="video2"><img id="image2" src="img/loader.gif"/></span><div id="botones_crm"><button disabled id="cam1" onpointerdown="if(!this.disabled)mandar_instruccion_simple('CAM1');">1</button><button id="cam2" disabled onpointerdown="if(!this.disabled)mandar_instruccion_simple('CAM2');">2</button><button disabled id="cam3" onpointerdown="if(!this.disabled)mandar_instruccion_simple('CAM3');">3</button><button id="cam4" disabled onpointerdown="if(!this.disabled)mandar_instruccion_simple('CAM4');">4</button></div></div>
+                <div id="log" class="oculta extra"><h4>Log Remote Control<button onpointerdown='cerrar_log()'>X</button></h4></div>
+
+                <table>
+
+                    <tr>
+                        <!-- Cambiar página de inicio según Raspberry -->
+                        <td><button onpointerdown="volver_principal('https://spain.thematiclearning.eu/Rover_RC');">Back</button></td>
+                        <td colspan="3" id="titulo"><span id="tr1">ROVER 1</span></td>
+
+                        <td><button id="syn" onpointerdown='if(!this.disabled)cerrar_socket();conectar_socket();'>Sync</button></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><button id="fow" onpointerdown='if(!this.disabled)mandar_instruccion(this,"FW","NOFW");'  disabled>Forw</button></td>
+                        <td></td>
+                        <td></td>
+                        <td><button id="open_vid" onpointerdown='if(!this.disabled)abrir_video(this);' disabled>Cam</button>&nbsp;&nbsp;<button id="open_log" onpointerdown='abrir_log(this)'>Log</button></td>
+                    </tr>
+                    <tr>
+                        <td><button id="lef" onpointerdown='if(!this.disabled)mandar_instruccion(this,"LT","NOLT");'  disabled>Left</button></td>
+                        <td><button id="arm" onpointerdown='if(!this.disabled)mandar_instruccion(this,"ARM","NOARM");' disabled>Arm</button></td>
+                        <td><button id="rig"  onpointerdown='if(!this.disabled)mandar_instruccion(this,"RT","NORT");'  disabled>Right</button></td>
+                        <td></td>
+                        <td><button id="open_crc" disabled onpointerdown='if(!this.disabled)abrir_crc(this);' >Cam RC</button></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><button id="rea" onpointerdown='if(!this.disabled)mandar_instruccion(this,"RE","NORE");'  disabled>Rear</button></td>
+                        <td></td>
+                        <td><label for="speed">Speed</label><br/><select disabled onchange='mandar_velocidad();' id="speed"><option value="25">Low</option><option selected value="100">Med</option><option value="175">Fast</option><option>
+                        <td><label for="resol">Cam Resol.</label><br/><select disabled onchange='cambiar_resolucion();' disabled id="resol"><option value="100">100%</option><option value="80">80%</option><option value="65">65%</option><>
+
+                    </tr>
+
+                </table>
+
+              </div>
+           </div>
+      </div>
+      <div id="tvesModalGeneral" class="modalContainer oculta" >
+        <div id="modal_move_general"  class="movida" onmousemove="ratonMovido(this,event);" >
+            <div class="modal-content">
+                <div class="cerrar_modal" onmousedown="ratonPulsado(this.parentNode,event);" onmouseup="ratonSoltado(event);"><span class="close" onclick="cerrar_modal();">×</span></div>
+
+                <div id="modal_contenido_general"></div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+</html>

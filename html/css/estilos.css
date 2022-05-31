@@ -1,0 +1,150 @@
+* {
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+    font-family:sans-serif;
+    user-select: none;-moz-user-select: none;-webkit-user-select: none;-ms-user-select: none;
+}
+
+
+#control{
+    user-select: none; 
+    display:flex;
+    align-items: flex-end;
+    min-height:100vh;
+    flex-direction: column;
+    width:100%;
+}
+#wrapper{
+    
+    width:100%;
+    margin:auto;
+    
+    overflow:auto;
+    padding:30px;
+ 
+}
+.responsive >table{
+    background:#F3F3F3;
+    border:1px solid rgba(0,0,0,0.2);
+    width:100%;
+    text-align:center;
+    
+}
+#caption{
+    
+    text-transform: uppercase;
+    text-shadow: 0px 0px 0 #98c3d1, -1px 1px 0 #5fa7be, -2px 2px 0 #49a4c2, -3px 3px 0 #2299c0, -4px 4px 0 #0097c9;
+    color:rgb(47, 11, 250);
+    text-align:center;
+    font-size:calc(2em + 1vh);
+    padding:2vh;
+    width:100%;
+}
+
+  
+           
+button {
+  border: 1px solid #0066cc;
+  background-color: #0099cc;
+  color: #ffffff;
+  margin-top:15%;margin-bottom:15%;padding:0.5em
+}
+
+button:hover {
+  
+  margin-top:15%;margin-bottom:15%;padding:0.5em;
+  cursor:pointer;
+}
+
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  cursor:auto;
+}
+.pulsado{
+    border: 1px solid #0099cc;
+  background-color: #0003cc;
+  color: #ffffff;
+}
+
+.oculta{display:none}
+
+
+.extra{border:1px solid black; width:100%;overflow:auto;max-height:300px;}
+.extra h4{text-align:center;text-decoration:underline;margin-bottom:0.5em;position:sticky;top:0px;overflow:hidden;background-color: white;}
+.extra h4 button{margin:0;padding:0.2em;float:right}
+.extra h4 button:hover{margin:0;padding:0.2em}
+
+
+#vid h4,#crc h4{margin-bottom:0;}
+
+
+.responsive{
+  display:flex;
+  align-items: flex-end;
+  flex-direction:column;
+  justify-content: space-around;
+
+}
+#remote::before {
+  
+  content: "RC";
+}
+
+#vid img,#crc img{width:100%;height:91%;margin:0;padding:0;}
+#vid,#crc{
+  background-color:#F3F3F3;position:relative;
+}
+
+
+
+#botones_crm{position:absolute;bottom:0;width:100%;display:flex;justify-content: space-around;}
+#botones_crm button{width:15%;margin:0 0.2em}
+
+
+@media screen and (min-width: 576px) {
+  
+  .responsive{flex-direction: row-reverse;}
+  table{height:300px;max-width:500px;}
+  .extra{height:300px;}
+  #wrapper{max-width: 1000px;}
+  #remote::before {
+  
+    content: "Remote Control";
+  }
+}
+
+input[type="radio"],label img{vertical-align: middle;cursor:pointer}
+.rov{cursor:pointer}
+.flotar_izq{float:left;text-align:center;width:20%}
+
+
+
+#tr1{font-size:1.75rem;text-decoration:underline;background:url("../img/espana.png") no-repeat 0 center;padding-left:30px}
+#tr2{font-size:1.75rem;text-decoration:underline;background:url("../img/francia.png") no-repeat 0 center;padding-left:30px}
+#tr3{font-size:1.75rem;text-decoration:underline;background:url("../img/suecia.png") no-repeat 0 center;padding-left:30px}
+#tr4{font-size:1.75rem;text-decoration:underline;background:url("../img/croacia.png") no-repeat 0 center;padding-left:30px}
+#tr5{font-size:1.75rem;text-decoration:underline;background:url("../img/europa.png") no-repeat 0 center;padding-left:30px}
+
+
+#modal_contenido_general h1{text-align: center;}
+
+#modal_contenido_general p.boton button, #modal_contenido_general p.boton button {
+  
+  margin:0;
+  padding:0.5em;
+}
+
+
+#modal_contenido_general p, #modal_contenido_general p{margin:1em 0.3em;text-align:justify}
+
+
+#modal_contenido_general p.boton , #modal_contenido_general p.boton {
+  
+  text-align:center;
+  margin:1em;
+}
+
