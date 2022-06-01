@@ -480,7 +480,7 @@ function iniciar_interface_rover(rover)
 
 
 
-    IP_SERV_LOCAL=obtener_ip();
+    obtener_ip();
 
  
    
