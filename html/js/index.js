@@ -627,10 +627,11 @@ function obtener_ip()
             if(type == 'ip')
             {
                 IP_SERV_LOCAL = msg.message;
+                console.log(IP_SERV_LOCAL);
+                websocket3.close();
+                conectar_socket();
             }
-            console.log(IP_SERV_LOCAL);
-            websocket3.close();
-            conectar_socket();
+            
             
     };
     websocket3.onerror	= function(ev){
