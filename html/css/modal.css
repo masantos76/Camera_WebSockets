@@ -47,7 +47,7 @@
     cursor: pointer;
 }
 
-.movida{position:fixed;padding:0;width:100%;overflow:auto;}
+.movida{position:fixed;padding:10em;width:100%;overflow:auto;margin-top:-10em}
 
 @media screen and (min-width: 576px) {
   
